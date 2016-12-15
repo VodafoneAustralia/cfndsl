@@ -635,12 +635,24 @@ Resources:
     Policies: [ IAMEmbeddedPolicy ]
    Attributes:
     Arn: String
+  "AWS::KinesisFirehose::DeliveryStream" :
+    Properties:
+       DeliveryStreamName: String
+       ElasticsearchDestinationConfiguration: ElasticsearchDestinationConfiguration
+       RedshiftDestinationConfiguration: RedshiftDestinationConfiguration
+       S3DestinationConfiguration: S3DestinationConfiguration
   "AWS::KMS::Key" :
     Properties:
       Description: String
       Enabled: Boolean
       EnableKeyRotation: Boolean
       KeyPolicy: JSON
+  "AWS::Logs::Destination" :
+    Properties:
+      DestinationName: String
+      DestinationPolicy: String
+      RoleArn: String
+      TargetArn: String
   "AWS::Logs::LogGroup" :
     Properties:
       RetentionInDays: Integer
@@ -649,6 +661,12 @@ Resources:
       FilterPattern: String
       LogGroupName: String
       MetricTransformations: [ MetricTransformation ]
+  "AWS::Logs::SubscriptionFilter" :
+    Properties:
+      DestinationArn: String
+      FilterPattern: String
+      LogGroupName: String
+      RoleArn: String
   "AWS::OpsWorks::App" :
     Properties:
       AppSource: OpsWorksSource
@@ -1401,3 +1419,48 @@ Types:
    ResourcePath: String
    ThrottlingBurstLimit: Integer
    ThrottlingRateLimit: Number
+ S3DestinationConfiguration:
+   BucketARN: String
+   BufferingHints: BufferingHints
+   CloudWatchLoggingOptions: CloudWatchLoggingOptions
+   CompressionFormat: String
+   EncryptionConfiguration: EncryptionConfiguration
+   Prefix: String
+   RoleARN: String
+ EncryptionConfiguration:
+   KMSEncryptionConfig: KMSEncryptionConfig
+   NoEncryptionConfig: String
+ KMSEncryptionConfig:
+   AWSKMSKeyARN: String
+ BufferingHints:
+   IntervalInSeconds: Integer
+   SizeInMBs: Integer
+ CloudWatchLoggingOptions:
+   Enabled: Boolean
+   LogGroupName: String
+   LogStreamName: String
+ RedshiftDestinationConfiguration:
+   CloudWatchLoggingOptions: CloudWatchLoggingOptions
+   ClusterJDBCURL: String
+   CopyCommand: CopyCommand
+   Password: String
+   RoleARN: String
+   S3Configuration: S3DestinationConfiguration
+   Username: String
+ CopyCommand:
+   CopyOptions: String
+   DataTableColumns: String
+   DataTableName: String
+ ElasticsearchDestinationConfiguration:
+   BufferingHints: BufferingHints
+   CloudWatchLoggingOptions: CloudWatchLoggingOptions
+   DomainARN: String
+   IndexName: String
+   IndexRotationPeriod: String
+   RetryOptions: RetryOptions
+   RoleARN: String
+   S3BackupMode: String
+   S3Configuration: S3DestinationConfiguration
+   TypeName: String
+ RetryOptions:
+   DurationInSeconds: Integer
