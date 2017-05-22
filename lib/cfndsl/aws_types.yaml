@@ -174,7 +174,7 @@ Resources:
    Properties: {}
   "AWS::CloudFront::Distribution" :
    Properties:
-    DistributionConfig: String
+    DistributionConfig: JSON
    Attributes:
     DomainName: String
   "AWS::CloudTrail::Trail" :
