@@ -1080,6 +1080,7 @@ Types:
   Compress: Boolean
   DefaultTTL: Integer
   ForwardedValues: CloudFrontForwardedValues
+  LambdaFunctionAssociations: [ CloudFrontLambdaFunctionAssociation ]
   MaxTTL: Integer
   MinTTL: Integer
   SmoothStreaming: Boolean
@@ -1091,6 +1092,9 @@ Types:
   Headers: [ String ]
   QueryString: Boolean
   QueryStringCacheKeys: [ String ]
+ CloudFrontLambdaFunctionAssociation:
+   EventType: String
+   LambdaFunctionARN: String
  CloudFrontCookies:
   Forward: String
   WhitelistedNames: [ String ]
