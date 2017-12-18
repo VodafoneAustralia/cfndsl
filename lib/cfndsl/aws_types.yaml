@@ -1459,6 +1459,10 @@ Types:
  ThrottleSettings:
    BurstLimit: Integer
    RateLimit: Number
+ QuotaSettings:
+  Limit: Integer,
+  Offset: Integer,
+  Period: String
  ApiGatewayDeploymentStageDescription:
    CacheClusterEnabled: Boolean
    CacheClusterSize: String
