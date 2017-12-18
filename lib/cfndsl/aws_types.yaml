@@ -8,7 +8,7 @@ Resources:
      Description: String
      Quota: QuotaSettings
      Throttle: ThrottleSettings
-     UsageNamePlan: String
+     UsagePlanName: String
   "AWS::ApiGateway::ApiKey" :
     Properties:
      Description: String
