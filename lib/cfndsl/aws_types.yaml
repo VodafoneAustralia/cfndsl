@@ -1460,8 +1460,8 @@ Types:
    BurstLimit: Integer
    RateLimit: Number
  QuotaSettings:
-  Limit: Integer,
-  Offset: Integer,
+  Limit: Integer
+  Offset: Integer
   Period: String
  ApiGatewayDeploymentStageDescription:
    CacheClusterEnabled: Boolean
