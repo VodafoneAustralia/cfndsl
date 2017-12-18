@@ -2,6 +2,13 @@ Resources:
   "AWS::ApiGateway::Account" :
     Properties:
      CloudWatchRoleArn: String
+  "AWS::ApiGateway::UsagePlan" :
+    Properties:
+     ApiStages: [ ApiGatewayApiKeyStageKey ]
+     Description: String
+     Quota: QuotaSettings
+     Throttle: ThrottleSettings
+     UsageNamePlan: String
   "AWS::ApiGateway::ApiKey" :
     Properties:
      Description: String
@@ -1449,6 +1456,9 @@ Types:
  ApiGatewayApiKeyStageKey:
    RestApiId: String
    StageName: String
+ ThrottleSettings:
+   BurstLimit: Integer
+   RateLimit: Number
  ApiGatewayDeploymentStageDescription:
    CacheClusterEnabled: Boolean
    CacheClusterSize: String
