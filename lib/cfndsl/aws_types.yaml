@@ -964,6 +964,11 @@ Resources:
     Attributes:
      Arn: String
      QueueName: String
+  "AWS::StepFunctions::StateMachine":
+    Properties:
+      StateMachineName: String
+      DefinitionString: String
+      RoleArn: String
   "AWS::WAF::ByteMatchSet" :
     Properties:
       ByteMatchTuples: [ ByteMatchTuple ]
