@@ -84,6 +84,17 @@ module CfnDsl
       Fn.new("Select", [ index, array] )
     end
 
+    # Equivalent to the CloudFormation template built in function Fn::Sub
+    def FnSub(string, substitutions = nil)
+      raise ArgumentError, 'The first argument passed to Fn::Sub must be a string' unless string.is_a? String
+      if substitutions
+        raise ArgumentError, 'The second argument passed to Fn::Sub must be a Hash' unless substitutions.is_a? Hash
+        Fn.new('Sub', [string, substitutions])
+      else
+        Fn.new('Sub', string)
+      end
+    end
+
     def FnFormat(string, *arguments)
       ##
       # Usage
