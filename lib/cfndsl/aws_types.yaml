@@ -9,7 +9,7 @@ Resources:
       Timeout: Integer
       Role: String
       Policies: [ IAMEmbeddedPolicy ]
-      Environment: JSON
+      Environment: LambdaEnvironment
       VpcConfig: VpcConfig
       Events: JSON
   "AWS::ApiGateway::Account" :
