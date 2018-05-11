@@ -1,5 +1,5 @@
 Resources:
-  "AWS::Serverless::Function":
+  "AWS::Serverless::Function" :
     Properties:
       Handler: String
       Runtime: String
