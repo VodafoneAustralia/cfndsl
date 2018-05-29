@@ -21,6 +21,7 @@ module CfnDsl
 
     def get_references()
       refs = []
+      binding.pry
       if @DependsOn then
         if( @DependsOn.respond_to?(:each) ) then
           @DependsOn.each do |dep|

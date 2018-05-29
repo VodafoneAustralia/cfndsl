@@ -1,18 +1,19 @@
 require 'test/unit'
 require 'cfndsl'
+require 'pry'
 
 class CfnDslTest < Test::Unit::TestCase
   def test_empty_template
     x = CfnDsl::CloudFormationTemplate.new
     assert_equal '{"AWSTemplateFormatVersion":"2010-09-09"}',
-        x.to_json
+                 x.to_json
   end
 
   def test_dsl_attr_setter
     x = CfnDsl::CloudFormationTemplate.new
     x.AWSTemplateFormatVersion "AAAAAA"
     assert_equal '{"AWSTemplateFormatVersion":"AAAAAA"}',
-        x.to_json
+                 x.to_json
   end
 
   def test_dsl_content_object
@@ -45,8 +46,9 @@ class CfnDslTest < Test::Unit::TestCase
 
       ref = Ref("X")
       test.assert_equal '{"Ref":"X"}', ref.to_json
-      refs = ref.references({})
-      test.assert_equal( true, refs.has_key?("X") )
+
+      refs = ref.get_references()
+      test.assert_equal( true, refs.include?("X") )
 
       fnbase64 = FnBase64("A")
       test.assert_equal '{"Fn::Base64":"A"}', fnbase64.to_json
@@ -90,13 +92,17 @@ This is a %% sign
         Property("z", Ref("q") )
       }
 
-      qr = q.references({})
-      rr = r.references({})
+      qr = q.get_references()
 
-      test.assert_equal(true, qr.has_key?("r"))
-      test.assert_equal(false,qr.has_key?("q"))
-      test.assert_equal(true, rr.has_key?("q"))
-      test.assert_equal(false,rr.has_key?("r"))
+      binding.pry
+      rr = r.get_references()
+
+
+
+      test.assert_equal(true, qr.include?("r"))
+      test.assert_equal(false,qr.include?("q"))
+      test.assert_equal(true, rr.include?("q"))
+      test.assert_equal(false,rr.include?("r"))
     }
 
     invalids = x.checkRefs();

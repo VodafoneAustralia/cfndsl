@@ -1,31 +1,29 @@
 module CfnDsl
+  # Keeps track of errors
   module Errors
-    @@errors = []
+    @errors = []
 
-    def self.error( err, idx=nil )
-      if(idx.nil?) then
-        @@errors.push ( err + "\n" + caller.join("\n") + "\n" )
+    def self.error(err, idx = nil)
+      if idx.nil?
+        @errors.push(err + "\n" + caller.join("\n") + "\n")
       else
-        if( m = caller[idx].match(/^.*?:\d+:/ ) ) then
-          err_loc = m[0];
-        else
-          err_loc = caller[idx]
-        end
+        m = caller(idx..idx).first.match(/^.*?:\d+:/)
+        err_loc = m ? m[0] : caller(idx..idx).first
 
-        @@errors.push ( err_loc + " " + err + "\n" )
+        @errors.push(err_loc + ' ' + err + "\n")
       end
     end
 
-    def self.clear()
-      @@errors = []
+    def self.clear
+      @errors = []
     end
 
-    def self.errors()
-      @@errors
+    def self.errors
+      @errors
     end
 
-    def self.errors?()
-      return @@errors.length > 0
+    def self.errors?
+      !@errors.empty?
     end
   end
 end

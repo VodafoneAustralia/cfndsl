@@ -9,23 +9,22 @@ class CfnDslTest < Test::Unit::TestCase
     x.declare {
 
       [
-        'AWS::AccountId',
-        'AWS::NotificationARNs',
-        'AWS::NoValue',
-        'AWS::Region',
-        'AWS::StackId',
-        'AWS::StackName'
+          'AWS::AccountId',
+          'AWS::NotificationARNs',
+          'AWS::NoValue',
+          'AWS::Region',
+          'AWS::StackId',
+          'AWS::StackName'
       ].each do |param|
 
         ref = Ref(param)
         test.assert_equal "{\"Ref\":\"#{param}\"}",ref.to_json
 
-        refs = ref.references({})
-        test.assert_equal( true, refs.has_key?(param) )
+        refs = ref.get_references()
+        test.assert_equal( true, refs.include?(param) )
       end
 
     }
 
   end
 end
-

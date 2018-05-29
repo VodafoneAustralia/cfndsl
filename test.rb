@@ -17,14 +17,14 @@ CloudFormation {
   Condition('OneIsTest', FnEquals(Ref('One'), 'Test'))
   Condition('OneIsNotTest', FnNot(FnEquals(Ref('One'), 'Test')))
   Condition('OneIsTestAndTwoIsTest', FnAnd([
-    FnEquals(Ref('One'), 'Test'),
-    FnNot(FnEquals(Ref('Two'), 'Test')),
-  ]))
+                                               FnEquals(Ref('One'), 'Test'),
+                                               FnNot(FnEquals(Ref('Two'), 'Test')),
+                                           ]))
 
   Condition('OneIsTestOrTwoIsTest', FnOr([
-    FnEquals(Ref('One'), 'Test'),
-    FnEquals(Ref('Two'), 'Test'),
-  ]))
+                                             FnEquals(Ref('One'), 'Test'),
+                                             FnEquals(Ref('Two'), 'Test'),
+                                         ]))
 
   Output(:One, FnBase64(Ref("One")))
 
@@ -56,12 +56,12 @@ CloudFormation {
     Property("Subnets", [ FnSelect("0", Ref("ElbSubnets")), FnSelect("1", Ref("ElbSubnets")) ] )
   }
 
-  AutoScalingGroup("ASG") { 
+  AutoScalingGroup("ASG") {
     UpdatePolicy("AutoScalingRollingUpdate", {
-                 "MinInstancesInService" => "1",
-                 "MaxBatchSize"          => "1",
-                 "PauseTime"             => "PT15M"
-                 })
+        "MinInstancesInService" => "1",
+        "MaxBatchSize"          => "1",
+        "PauseTime"             => "PT15M"
+    })
     AvailabilityZones FnGetAZs("")
     LaunchConfigurationName Ref("LaunchConfig")
     MinSize 1
