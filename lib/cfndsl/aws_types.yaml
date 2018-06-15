@@ -1,4 +1,17 @@
 Resources:
+  "AWS::Serverless::Function" :
+    Properties:
+      Handler: String
+      Runtime: String
+      CodeUri: String
+      Description: String
+      MemorySize: Integer
+      Timeout: Integer
+      Role: String
+      Policies: [ IAMEmbeddedPolicy ]
+      Environment: LambdaEnvironment
+      VpcConfig: VpcConfig
+      Events: JSON
   "AWS::ApiGateway::Account" :
     Properties:
      CloudWatchRoleArn: String
