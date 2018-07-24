@@ -935,6 +935,7 @@ Resources:
     NotificationConfiguration: S3NotificationConfiguration
     VersioningConfiguration: JSON
     WebsiteConfiguration: JSON
+    LoggingConfiguration: S3LoggingConfiguration
     Tags: [ EC2Tag ]
    Attributes:
     DomainName: String
@@ -1431,6 +1432,9 @@ Types:
    Key: String
    Type: String
    Value: String
+ S3LoggingConfiguration:
+   DestinationBucketName: String
+   LogFilePrefix: String
  S3NotificationConfiguration:
    LambdaConfigurations: [ S3NotificationLambdaConfiguration ]
    QueueConfigurations: [ S3NotificationQueueConfiguration ]
