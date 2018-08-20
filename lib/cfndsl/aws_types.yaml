@@ -927,6 +927,12 @@ Resources:
     HostedZoneId: String
     HostedZoneName: String
     RecordSets: [ JSON ]
+  "AWS::CertificateManager::Certificate" :
+   Properties:
+    DomainName: String
+    DomainValidationOptions: [DomainValidationOptions]
+    Tags: [ACMTags]
+    ValidationMethod: String
   "AWS::S3::Bucket" :
    Properties:
     BucketName: String
@@ -1597,5 +1603,11 @@ Types:
    FieldToMatch: FieldToMatch
    TextTransformation: String
  ResourceTag:
+   Key: String
+   Value: String
+ DomainValidationOptions:
+   DomainName: String
+   ValidationDomain: String
+ ACMTags:
    Key: String
    Value: String
