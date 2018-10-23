@@ -961,6 +961,7 @@ Resources:
       Endpoint: String
       Protocol: String
       TopicArn: String
+      Region: String
   "AWS::SNS::Topic" :
     Properties:
       DisplayName: String
