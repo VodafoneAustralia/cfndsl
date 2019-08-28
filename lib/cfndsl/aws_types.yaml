@@ -272,6 +272,7 @@ Resources:
     LocalSecondaryIndexes : [ LocalSecondaryIndexesType ]
     ProvisionedThroughput : ProvisionedThroughputType
     TableName : String
+    PointInTimeRecoverySpecification : PointInTimeRecoverySpecificationType
   "AWS::EC2::CustomerGateway" :
     Properties :
       BgpAsn : Number
@@ -1612,3 +1613,5 @@ Types:
  ACMTags:
    Key: String
    Value: String
+PointInTimeRecoverySpecificationType:
+  PointInTimeRecoveryEnabled: Boolean
