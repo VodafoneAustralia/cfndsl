@@ -1613,5 +1613,5 @@ Types:
  ACMTags:
    Key: String
    Value: String
-PointInTimeRecoverySpecificationType:
-  PointInTimeRecoveryEnabled: Boolean
+ PointInTimeRecoverySpecificationType:
+   PointInTimeRecoveryEnabled: Boolean
