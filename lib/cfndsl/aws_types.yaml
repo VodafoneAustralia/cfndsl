@@ -116,6 +116,7 @@ Resources:
     MetricsCollection: [ MetricsCollectionType ]
     NotificationConfigurations: [ NotificationConfiguration ]
     Tags: [ AutoScalingTags ]
+    TargetGroupARNs: [ String ]
     TerminationPolicies: [ String ]
     VPCZoneIdentifier: [ String ]
   "AWS::AutoScaling::LaunchConfiguration" :
@@ -586,6 +587,49 @@ Resources:
     DNSName: String
     SourceSecurityGroup.GroupName: String
     SourceSecurityGroup.OwnerAlias: String
+  "AWS::ElasticLoadBalancingV2::Listener" :
+   Properties:
+    Certificates: [ ALBCertificate ]
+    DefaultActions: [ Action ]
+    LoadBalancerArn: String
+    Port: Integer
+    Protocol: String
+    SslPolicy: String
+  "AWS::ElasticLoadBalancingV2::TargetGroup" :
+   Properties:
+    HealthCheckEnabled: Boolean
+    HealthCheckIntervalSeconds: Integer
+    HealthCheckPath: String
+    HealthCheckPort: String
+    HealthCheckProtocol: String
+    HealthCheckTimeoutSeconds: Integer
+    HealthyThresholdCount: Integer
+    Matcher: Matcher
+    Name: String
+    Port: Integer
+    Protocol: String
+    Tags: [ EC2Tag ]
+    TargetGroupAttributes: [ TargetGroupAttribute ]
+    Targets: [ TargetDescription ]
+    TargetType: String
+    UnhealthyThresholdCount: Integer
+    VpcId: String
+  "AWS::ElasticLoadBalancingV2::LoadBalancer" :
+   Properties:
+    IpAddressType: String
+    LoadBalancerAttributes: [ LoadBalancerAttribute ]
+    Name: String
+    Scheme: String
+    SecurityGroups: [ String ]
+    Subnets: [ String ]
+    Tags: [ EC2Tag ]
+    Type: String
+   Attributes:
+    CanonicalHostedZoneID: String
+    DNSName: String
+    LoadBalancerFullName: String
+    LoadBalancerName: String
+    SecurityGroups: String
   "AWS::Elasticsearch::Domain" :
    Properties:
     AccessPolicies: JSON
@@ -1377,6 +1421,9 @@ Types:
    LoadBalancerPorts: [ String ]
    PolicyName: String
    PolicyType: String
+ LoadBalancerAttribute:
+   Key: String
+   Value: String
  ECSHost:
    SourcePath: String
  ECSEnvironmentVariable:
@@ -1615,3 +1662,17 @@ Types:
    Value: String
  PointInTimeRecoverySpecificationType:
    PointInTimeRecoveryEnabled: Boolean
+ ALBCertificate:
+   CertificateArn: String
+ Action:
+   TargetGroupArn: String
+   Type: String
+ Matcher:
+   HttpCode: String
+ TargetGroupAttribute:
+   Key: String
+   Value: String
+ TargetDescription:
+   AvailabilityZone: String
+   Id: String
+   Port: Integer
