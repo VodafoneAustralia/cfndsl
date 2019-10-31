@@ -1018,6 +1018,15 @@ Resources:
       MetricName: String
       Name: String
       Rules: [ WebACLRule ]
+  
+  "AWS::WAFRegional::RateBasedRule" :
+    Properties: 
+      MatchPredicates: [ Predicate ]
+      MetricName: String
+      Name: String
+      RateKey: String
+      RateLimit: Integer
+  
   "AWS::WAF::XssMatchSet" :
     Properties:
       Name: String
